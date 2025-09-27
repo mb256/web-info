@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mbrouk welcome page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            padding: 10px;
+            border-bottom: 1px solid #fff; /* Add this line */
+        }
+        .headline {
+            font-size: 24px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            padding: 10px;
+            background-color: #222; /* Set background color of container */
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            padding: 10px;
+            margin-right: 10px; /* Add margin right to create space between sidebar and content */
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .content {
+            flex: 1;
+            background-color: #333;
+            padding: 10px;
+        }
+        .table {
+            border-collapse: separate;
+            border-spacing: 10px;
+        }
+        .th, td {
+          border-bottom: 1px solid lightgray;
+          padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="headline">Welcome to mbrouk info page</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('welcome') }}">Welcome</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            {% block content %}
+                <!-- Content goes here -->
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
