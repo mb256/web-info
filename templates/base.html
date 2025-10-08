@@ -1,80 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>mbrouk welcome page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Landing Page</title>
+    <link rel="stylesheet" link href="/static_web/css/styles-dark.css">
     <style>
-        body {
+        /* Responsive portfolio layout */
+        .portfolio-flex {
             display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            background-color: #222;
-            color: #fff;
-            margin: 0;
-            padding: 0;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 20px;
         }
-        .header {
-            background-color: #333;
-            padding: 10px;
-            border-bottom: 1px solid #fff; /* Add this line */
-        }
-        .headline {
-            font-size: 24px;
-            margin: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: row;
-            flex: 1;
-            padding: 10px;
-            background-color: #222; /* Set background color of container */
-        }
-        .sidebar {
-            width: 200px;
-            background-color: #333;
-            padding: 10px;
-            margin-right: 10px; /* Add margin right to create space between sidebar and content */
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar li {
-            margin-bottom: 10px;
-        }
-        .sidebar a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .content {
-            flex: 1;
-            background-color: #333;
-            padding: 10px;
-        }
-        .table {
-            border-collapse: separate;
-            border-spacing: 10px;
-        }
-        .th, td {
-          border-bottom: 1px solid lightgray;
-          padding: 10px;
+
+        @media (max-width: 700px) {
+            .portfolio-flex {
+                flex-direction: column;
+            }
+
+            .portfolio-flex>div {
+                min-width: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .portfolio-flex img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="header">
-        <h1 class="headline">Welcome to mbrouk info page</h1>
-    </div>
-    <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="{{ url_for('welcome') }}">Welcome</a></li>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="/static_web/img/logo-no-bg.png" alt="Info Page Logo" style="height: 75px;">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block templ_main_content %}
+            <!-- Hero Section -->
+            <!-- About Section -->
+            <!-- Portfolio Section -->
+            <!-- Contact Section -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2025 mb256. All rights reserved.</p>
+            </div>
+            <div class="footer-social">
+                <!-- Add your social media links here -->
+            </div>
         </div>
-        <div class="content">
-            {% block content %}
-                <!-- Content goes here -->
-            {% endblock %}
-        </div>
-    </div>
+    </footer>
 </body>
+
 </html>
