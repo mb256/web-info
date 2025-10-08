@@ -1,57 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Landing Page</title>
-    <link rel="stylesheet" link href="/static_web/css/styles-dark.css">
-    <style>
-        /* Responsive portfolio layout */
-        .portfolio-flex {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            gap: 20px;
-        }
+{% block templ_main_content %}
 
-        @media (max-width: 700px) {
-            .portfolio-flex {
-                flex-direction: column;
-            }
-
-            .portfolio-flex>div {
-                min-width: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-
-            .portfolio-flex img {
-                max-width: 100% !important;
-                height: auto !important;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Header Section -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <img src="/static_web/img/logo-no-bg.png" alt="Info Page Logo" style="height: 75px;">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
+<!-- Hero Section -->
         <section class="hero-section">
             <div id="text-display"></div>
             <script src="/static_web/js/text-animation.js"></script>
@@ -188,19 +139,5 @@
                     email:&nbsp;&nbsp;&nbsp;<a href="mailto:mb256@seznam.cz">mb256@seznam.cz</a>
             </div>
         </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-info">
-                <p>&copy; 2025 mb256. All rights reserved.</p>
-            </div>
-            <div class="footer-social">
-                <!-- Add your social media links here -->
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+{% endblock %}
