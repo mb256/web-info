@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block templ_main_content %}
+
+<!-- Hero Section -->
+        <section class="hero-section">
+            <div id="text-display"></div>
+            <h1>Route info search</h1>
+            <p>
+                Najdi info o lezecke ceste ...
+            </p>
+            
+            <!-- Search Form -->
+            <div class="search-container">
+                <form action="/search" method="POST" class="search-form">
+                    <div class="search-field-container">
+                        <input type="text" 
+                               id="route-search" 
+                               name="route_name" 
+                               placeholder="Zadej nazev cesty..." 
+                               class="search-input"
+                               value="{{ search_query or '' }}"
+                               required>
+                    </div>
+                    <div class="search-button-container">
+                        <button type="submit" class="search-button">
+                            <span>Hľadať</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Search Results Section -->
+        {% if show_results %}
+        <section class="search-results">
+            <div class="container">
+                <h2>Vysledky vyhledavani pro: "{{ search_query }}"</h2>
+                <div class="results-container">
+                    <!-- Here you can add actual search results -->
+                    <p>Hledate informace o ceste: <strong>{{ search_query }}</strong></p>
+                    <p>Bude implementovano v budoucnosti...</p>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+{% endblock %}
