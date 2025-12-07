@@ -1,0 +1,211 @@
+{% extends 'base_routes.html' %}
+
+{% block templ_main_content %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1>Přelezy</h1>
+</section>
+
+<!-- Climbers Routes Section -->
+<section class="routes-section">
+    {% for climber_data in climbers %}
+    <div class="climber-container">
+        <h2 class="climber-name">{{ climber_data.name }}</h2>
+        
+        {% if climber_data.error %}
+        <div class="error-message">
+            <p>{{ climber_data.error }}</p>
+        </div>
+        {% elif climber_data.routes %}
+        <div class="table-container">
+            <table class="routes-table">
+                <thead>
+                    <tr>
+                        <th>Cesta</th>
+                        <th>Sektor</th>
+                        <th>Styl</th>
+                        <th>Obtížnost</th>
+                        <th>Datum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for route in climber_data.routes %}
+                    <tr>
+                        <td data-label="Nazev">{{ route.name }}</td>
+                        <td data-label="Sektor">{{ route.sector }}</td>
+                        <td data-label="Styl">{{ route.style }}</td>
+                        <td data-label="Obtížnost">{{ route.difficulty }}</td>
+                        <td data-label="Datum">{{ route.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-routes">
+            <p>Žádné přelezy k zobrazení</p>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section>
+
+<style>
+    .routes-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .climber-container {
+        margin-bottom: 3rem;
+        background-color: var(--bg-secondary);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .climber-name {
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 0.5rem;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .routes-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .routes-table thead {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .routes-table th {
+        padding: 1rem;
+        text-align: left;
+        color: var(--text-primary);
+        font-weight: 600;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .routes-table td {
+        padding: 0.875rem 1rem;
+        color: var(--text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .routes-table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .routes-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .error-message {
+        background-color: rgba(220, 53, 69, 0.2);
+        border-left: 4px solid #dc3545;
+        padding: 1rem;
+        border-radius: 4px;
+    }
+
+    .error-message p {
+        color: #ff6b6b;
+        margin: 0;
+    }
+
+    .no-routes {
+        background-color: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid #ffc107;
+        padding: 1rem;
+        border-radius: 4px;
+    }
+
+    .no-routes p {
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    /* Mobile responsive styles */
+    @media screen and (max-width: 768px) {
+        .routes-section {
+            padding: 1rem 0.5rem;
+        }
+
+        .climber-container {
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .climber-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .routes-table {
+            border: 0;
+        }
+
+        .routes-table thead {
+            display: none;
+        }
+
+        .routes-table tbody {
+            display: block;
+        }
+
+        .routes-table tr {
+            display: block;
+            margin-bottom: 1rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .routes-table td {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            text-align: right;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .routes-table td:last-child {
+            border-bottom: none;
+        }
+
+        .routes-table td::before {
+            content: attr(data-label);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+        }
+
+        .routes-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .climber-name {
+            font-size: 1.3rem;
+        }
+
+        .routes-table td {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+{% endblock %}
