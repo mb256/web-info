@@ -4,7 +4,7 @@
 
 <!-- Hero Section -->
 <section class="hero-section">
-    <h1>Přelezy</h1>
+    <h2>Nové Přelezy</h2>
 </section>
 
 <!-- Climbers Routes Section -->
@@ -143,67 +143,97 @@
         }
 
         .climber-container {
-            padding: 1rem;
-            margin-bottom: 2rem;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
         .climber-name {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .routes-table {
-            border: 0;
+            font-size: 0.75rem;
+            min-width: 100%;
         }
 
-        .routes-table thead {
-            display: none;
-        }
-
-        .routes-table tbody {
-            display: block;
-        }
-
-        .routes-table tr {
-            display: block;
-            margin-bottom: 1rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            overflow: hidden;
+        .routes-table th {
+            padding: 0.5rem 0.3rem;
+            font-size: 0.7rem;
+            white-space: nowrap;
         }
 
         .routes-table td {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            text-align: right;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.4rem 0.3rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
         }
 
-        .routes-table td:last-child {
-            border-bottom: none;
+        /* Make specific columns narrower on mobile */
+        .routes-table td:nth-child(3), /* Styl */
+        .routes-table th:nth-child(3) {
+            max-width: 50px;
         }
 
-        .routes-table td::before {
-            content: attr(data-label);
-            font-weight: 600;
-            color: var(--text-primary);
-            text-align: left;
+        .routes-table td:nth-child(4), /* Obtížnost */
+        .routes-table th:nth-child(4) {
+            max-width: 60px;
+        }
+
+        .routes-table td:nth-child(5), /* Datum */
+        .routes-table th:nth-child(5) {
+            max-width: 80px;
         }
 
         .routes-table tbody tr:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
         }
     }
 
     @media screen and (max-width: 480px) {
         .climber-name {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+        }
+
+        .routes-table {
+            font-size: 0.7rem;
+        }
+
+        .routes-table th {
+            padding: 0.4rem 0.25rem;
+            font-size: 0.65rem;
         }
 
         .routes-table td {
-            padding: 0.5rem 0.75rem;
-            font-size: 0.9rem;
+            padding: 0.35rem 0.25rem;
+            font-size: 0.7rem;
+            max-width: 120px;
+        }
+
+        /* Adjust column widths for very small screens */
+        .routes-table td:nth-child(3), /* Styl */
+        .routes-table th:nth-child(3) {
+            max-width: 40px;
+        }
+
+        .routes-table td:nth-child(4), /* Obtížnost */
+        .routes-table th:nth-child(4) {
+            max-width: 50px;
+        }
+
+        .routes-table td:nth-child(5), /* Datum */
+        .routes-table th:nth-child(5) {
+            max-width: 70px;
+            font-size: 0.65rem;
         }
     }
 </style>
